@@ -21,7 +21,8 @@ public class Ligne {
 
 	public float getPrix() {
 
-		return article.getPrixUnitaire();
+		float prix = article.getPrixUnitaire();
+		return prix;
 	}
 
 	public Article getArticle() {
