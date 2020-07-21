@@ -7,8 +7,9 @@ public class Ligne {
 
 	public Ligne(int qte, Article article) {
 		super();
-		this.qte = qte;
-		this.article = article;
+		setQte(qte);
+		setArticle(article);
+
 	}
 
 	public int getQte() {
@@ -21,12 +22,11 @@ public class Ligne {
 
 	public float getPrix() {
 
-		float prix = article.getPrixUnitaire();
-		return prix;
+		return article.getPrixUnitaire();
 	}
 
 	public Article getArticle() {
-		return article;
+		return this.article;
 	}
 
 	private void setArticle(Article article) {
