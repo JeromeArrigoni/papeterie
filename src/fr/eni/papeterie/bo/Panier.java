@@ -9,7 +9,8 @@ public class Panier {
 	private List<Ligne> lignesPanier;
 
 	public Panier() {
-		super();
+
+		float montant;
 		lignesPanier = new ArrayList<>();
 	}
 
@@ -21,13 +22,13 @@ public class Panier {
 		return lignesPanier.get(index);
 	}
 
-	public List<Ligne> getLignesPanier() {
+	public final List<Ligne> getLignesPanier() {
 		return lignesPanier;
 	}
 
 	public void addLigne(Article article, int qte) {
-		Ligne addLigne = new Ligne(qte, article);
-		lignesPanier.add(addLigne);
+
+		lignesPanier.add(new Ligne(qte, article));
 	}
 
 	public void updateLigne(int index, int newQte) {
