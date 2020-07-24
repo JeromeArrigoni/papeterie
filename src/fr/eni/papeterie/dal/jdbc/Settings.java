@@ -14,9 +14,10 @@ public class Settings {
 		properties = new Properties();
 		try {
 			properties.load(Settings.class.getResourceAsStream("conf.properties"));
+			System.out.println("Connexion réussie");
 
 		} catch (Exception e) {
-			System.out.println("Il y'a eu une erreur lors de l'ouverture");
+			System.out.println("Il y'a eu une erreur lors de l'ouverture du fichier");
 		}
 
 	}

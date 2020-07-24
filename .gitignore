@@ -1,0 +1,4 @@
+
+src/fr/eni/papeterie/dal/jdbc/conf.properties
+bin/fr/eni/papeterie/ihm/AppliTestDAL.class
+bin/fr/eni/papeterie/dal/jdbc/conf.properties

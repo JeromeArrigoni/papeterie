@@ -54,14 +54,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	}
 
-	public Connection getConnection() throws SQLException {
-		if (connection == null) {
-			connection = JdbcTools.getConnection();
-		}
-
-		return connection;
-	}
-
 	public void closeConnection() {
 		if (connection != null) {
 			try {
@@ -81,7 +73,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		ResultSet rs = null;
 		Article art = null;
 		try {
-			cnx = getConnection();
+			cnx = JdbcTools.getConnection();
 			rqt = cnx.prepareStatement(sqlSelectById);
 			rqt.setInt(1, id);
 
@@ -125,7 +117,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		ResultSet rs = null;
 		List<Article> liste = new ArrayList<Article>();
 		try {
-			cnx = getConnection();
+			cnx = JdbcTools.getConnection();
 			rqt = cnx.createStatement();
 			rs = rqt.executeQuery(sqlSelectAll);
 			Article art = null;
@@ -168,7 +160,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		try {
-			cnx = getConnection();
+			cnx = JdbcTools.getConnection();
 			rqt = cnx.prepareStatement(sqlUpdate);
 			rqt.setString(1, data.getReference());
 			rqt.setString(2, data.getMarque());
@@ -210,7 +202,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		try {
-			cnx = getConnection();
+			cnx = JdbcTools.getConnection();
 			rqt = cnx.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
 			rqt.setString(1, data.getReference());
 			rqt.setString(2, data.getMarque());
@@ -260,7 +252,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		try {
-			cnx = getConnection();
+			cnx = JdbcTools.getConnection();
 			// l'intégrité référentielle s'occupe d'invalider la suppression
 			// si l'article est référencé dans une ligne de commande
 			rqt = cnx.prepareStatement(sqlDelete);
@@ -288,7 +280,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		ResultSet rs = null;
 		List<Article> liste = new ArrayList<Article>();
 		try {
-			cnx = getConnection();
+			cnx = JdbcTools.getConnection();
 			rqt = cnx.prepareStatement(sqlSelectByMarque);
 			rqt.setString(1, marque);
 			rs = rqt.executeQuery();
@@ -331,7 +323,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		ResultSet rs = null;
 		List<Article> liste = new ArrayList<Article>();
 		try {
-			cnx = getConnection();
+			cnx = JdbcTools.getConnection();
 			rqt = cnx.prepareStatement(sqlSelectByMotCle);
 			rqt.setString(1, motCle);
 			rs = rqt.executeQuery();

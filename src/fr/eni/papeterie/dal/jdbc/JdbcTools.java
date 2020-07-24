@@ -6,13 +6,18 @@ import java.sql.SQLException;
 
 public class JdbcTools {
 
-	private static String urldb = Settings.getProperties("url");
-	private static String userdb = Settings.getProperties("utilisateur");
-	private static String passwordddb = Settings.getProperties("mdp").trim();
+	private static String urldb;
+	private static String userdb;
+	private static String passwordddb;
 
 	public static Connection getConnection() throws SQLException {
+
+		urldb = Settings.getProperties("url");
+		userdb = Settings.getProperties("utilisateur");
+		passwordddb = Settings.getProperties("mdp").trim();
 
 		return DriverManager.getConnection(urldb, userdb, passwordddb);
 
 	}
+
 }
