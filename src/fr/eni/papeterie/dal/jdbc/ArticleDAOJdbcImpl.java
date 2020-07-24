@@ -38,8 +38,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private static final String sqlSelectByMotCle = "select reference, marque, designation, prixUnitaire, qteStock, grammage, couleur, type "
 			+ " from articles where marque like ? or designation like ?";
 
-	private Connection connection;
-
 	static {
 		// Chargement du driver
 		try {
@@ -54,7 +52,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	}
 
-	public void closeConnection() {
+	public void closeConnection(Connection connection) {
 		if (connection != null) {
 			try {
 				connection.close();
@@ -104,7 +102,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			closeConnection();
+			closeConnection(cnx);
 
 		}
 		return art;
@@ -149,7 +147,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			closeConnection();
+			closeConnection(cnx);
 		}
 		return liste;
 
@@ -191,7 +189,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			closeConnection();
+			closeConnection(cnx);
 
 		}
 
@@ -242,7 +240,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			} catch (SQLException e) {
 				throw new DALException("close failed - ", e);
 			}
-			closeConnection();
+			closeConnection(cnx);
 
 		}
 	}
@@ -268,7 +266,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			} catch (SQLException e) {
 				throw new DALException("close failed ", e);
 			}
-			closeConnection();
+			closeConnection(cnx);
 
 		}
 	}
@@ -311,7 +309,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			} catch (SQLException e) {
 				throw new DALException("close failed ", e);
 			}
-			closeConnection();
+			closeConnection(cnx);
 		}
 		return liste;
 	}
@@ -353,7 +351,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			} catch (SQLException e) {
 				throw new DALException("close failed ", e);
 			}
-			closeConnection();
+			closeConnection(cnx);
 		}
 		return liste;
 	}
